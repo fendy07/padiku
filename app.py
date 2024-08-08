@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_page_config(layout="wide")
+st.set_page_config(page_title = 'Padiku App', page_icon = "🌾", layout = "wide")
 
 #----PAGE SETUP----
 about_page = st.Page(

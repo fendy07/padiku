@@ -64,7 +64,7 @@ n = len(y_test)
 p = X_test.shape[1]
 adjusted_r2 = 1 - (1 - r2) * (n - 1) / (n - p - 1)
 
-# Calculate SSE, SSR, SST, SE, ADJ[R2]
+# Calculate SSE, SSR
 sse = np.sum((y_test - y_pred) ** 2)
 ssr = np.sum((y_pred - np.mean(y)) ** 2)
 
@@ -157,7 +157,11 @@ with st.expander("RESIDUAL & LINE OF BEST FIT"):
    p = np.poly1d(z)
    xp = np.linspace(y_test.min(), y_test.max(), 100)
    fig.add_trace(go.Scatter(x=xp, y=p(xp), mode='lines', name='Best Fit Line'))
-   fig.update_layout(title = {'text': 'Regression Fit Line', 'xanchor': 'center', 'yanchor': 'top', 'x': 0.5, 'y': 0.95})
+   fig.update_layout(title = {'text': 'Regression Fit Line', 
+                              'xanchor': 'center', 
+                              'yanchor': 'top', 
+                              'x': 0.5, 
+                              'y': 0.95})
    st.plotly_chart(fig, use_container_width=True)
 # Residual Plot   
 with col2:

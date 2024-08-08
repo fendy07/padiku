@@ -4,6 +4,7 @@ pandas==2.2.2
 plotly==5.23.0
 seaborn==0.13.2
 streamlit==1.37.1
+statsmodels==0.14.2
 matplotlib==3.9.1.post1
 scikit-learn==1.5.1
 streamlit-extras==0.4.6

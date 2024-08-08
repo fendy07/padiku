@@ -33,6 +33,6 @@ pg = st.navigation(
 #st.logo('images/')
 st.sidebar.text(f'Created by Fendy Hendriyanto 👨🏼‍💻')
 st.sidebar.info("Untuk codingnya, bisa ditemukan di my GitHub:")
-st.sidebar.link_button("GitHub Source"," ")
+st.sidebar.link_button("GitHub Source","https://github.com/fendy07/padiku")
 #---- RUN NAVIGATION ------
 pg.run()

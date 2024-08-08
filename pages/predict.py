@@ -1,12 +1,15 @@
 import math
 import numpy as np
 import pandas as pd
-import seaborn as sns
 import streamlit as st
+import plotly.express as px
 from scipy.stats import zscore
 import matplotlib.pyplot as plt
+import plotly.graph_objects as go
+import plotly.figure_factory as ff
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LinearRegression
+from sklearn.inspection import permutation_importance
 from streamlit_extras.metric_cards import style_metric_cards
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
@@ -137,18 +140,52 @@ with st.expander("RESIDUAL & LINE OF BEST FIT"):
 
   col1, col2 = st.columns(2)
   with col1:
-     plt.scatter(y, y_pred)
-     plt.plot([min(y), max(y)], [min(y), max(y)], '--', color = 'red', label = 'Best fit Line')
-     plt.xlabel('Actual y | Produksi')
-     plt.ylabel('Predicted y')
-     plt.grid(True)
-     plt.legend()
-     st.pyplot(fig=plt)
-     
+   fig = px.scatter(x=y[:, 0], y=y_pred[:, 0], labels={'x': 'Actual y | Produksi', 'y': 'Predicted y'})
+   # Add a regression line
+   z = np.polyfit(y[:, 0], y_pred[:, 0], 1)
+   p = np.poly1d(z)
+   xp = np.linspace(y.min(), y.max(), 100)
+   fig.add_trace(go.Scatter(x=xp, y=p(xp), mode='lines', name='Best Fit Line'))
+   fig.update_layout(title = {'text': 'Regression Fit Line', 'xanchor': 'center', 'yanchor': 'top', 'x': 0.5, 'y': 0.95})
+   st.plotly_chart(fig, use_container_width=True)
+   
 with col2:
-   sns.displot(residuals, kind = 'kde', color = 'blue', fill = True, legend = True)
-   sns.set_style("whitegrid")
-   st.pyplot()
+   hist_data = [residuals]
+   group_label = ['distplot']
+   hist_data = [dataset.ravel() if dataset.ndim > 1 else dataset for dataset in hist_data]
+   plot = ff.create_distplot(hist_data, group_label, show_hist=True)
+   st.plotly_chart(plot, use_container_width=True)
+
+with st.expander('FEATURE IMPORTANCE & NORMALITY TEST'):
+   col1, col2 = st.columns(2)
+   with col1:
+      # Uji Normalitas model Regresi Linear
+       y_pred = linreg.predict(X)
+       err = y_pred - y
+       hist_data = [err.ravel() if err.ndim > 1 else err for err in hist_data]
+       group_label = ['distplot']
+       plot = ff.create_distplot(hist_data, group_label, show_hist=True)
+       plot.update_layout(title = {'text': 'Normality Test',
+                                   'xanchor': 'center',
+                                   'yanchor': 'top',
+                                   'x': 0.5, 
+                                   'y': 0.95})
+       st.plotly_chart(plot, use_container_width=True)
+   
+with col2:
+    # Feature Importance
+    importance = permutation_importance(linreg, X, y, n_repeats=10, random_state=42)
+    feature_names = ['Luas Panen', 'Curah hujan', 'Kelembapan', 'Suhu Rata-rata']
+    importance_df = pd.DataFrame({"Feature": feature_names, "Importance": importance.importances_mean})
+    # Sorting pada dataframe berdasarkan importance
+    importance_df = importance_df.sort_values("Importance", ascending=True)
+    bar = px.bar(importance_df, x = 'Importance', y = 'Feature')
+    title = bar.update_layout(title={'text': "Feature Importance Model Linear Regression", 
+                                     'xanchor': 'center', 
+                                     'yanchor': 'top', 
+                                     'x': 0.5, 
+                                     'y': 0.95})
+    st.plotly_chart(bar, use_container_width=True)
 
 with st.sidebar:
    with st.form("input_form", clear_on_submit = True):

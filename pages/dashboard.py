@@ -25,7 +25,7 @@ with st.expander("HASIL DATA"):
       'Suhu Rata-rata': padi['Suhu Rata-rata']
    })
    st.dataframe(padi, use_container_width=True)
-   st.write(f'<b>NOTES</b>: Sumber data berasal dari Kaggle.', unsafe_allow_html=True)
+   st.write(f'<b>NOTES</b>: Sumber data berasal dari Badan Pusat Statistik dan BMKG Indonesia dimulai dari periode 1993 sampai 2020.', unsafe_allow_html=True)
 
 # Download data csv
 download = padi.to_csv(index=False).encode('utf-8')
@@ -56,6 +56,8 @@ with st.expander("VISUALISASI DATA"):
                                         'x': 0.5,
                                         'y': 0.95})
       st.plotly_chart(bar, use_container_width=True)
+   
+   st.write(f"<b>NOTES</b>: Produksi Padi di Pulau Sumatera mengalami peningkatan dari tahun 2006 sampai 2017. Walaupun ditahun setelahnya mengalami penurunan disebabkan oleh masa gagal panen dan pandemi COVID-19 ditahun 2020.", unsafe_allow_html=True)
 
 with st.expander("CORRELATION"):
    col1, col2 = st.columns(2)

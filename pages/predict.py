@@ -201,12 +201,19 @@ with col2:
                                      'y': 0.95})
     st.plotly_chart(bar, use_container_width=True)
 
+#----- PREDICT NEW DATA -------
 with st.sidebar:
+   # Input form new data
    with st.form("input_form", clear_on_submit = True):
-      x1 = st.number_input("Luas Panen", )
+      # Luas Panen
+      x1 = st.number_input("Luas Panen", ) 
+      # Curah hujan
       x2 = st.number_input("Curah hujan", )
+      # Kelembapan
       x3 = st.number_input("Kelembapan", )
+      # Suhu Rata-rata
       x4 = st.number_input("Suhu Rata-rata", )
+      # Submit button for Predict
       submit_button = st.form_submit_button(label = 'Predict')
 
 if submit_button:

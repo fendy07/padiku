@@ -1,2 +1,2 @@
-# padiku
-This project about dashboard and predict analysis in case rice production in Sumatra Island using Regression based algorithm.
+# Padiku
+This project is about dashboard and prediction analysis in case rice production in Sumatra Island using a regression-based algorithm.

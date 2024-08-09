@@ -66,7 +66,7 @@ adjusted_r2 = 1 - (1 - r2) * (n - 1) / (n - p - 1)
 
 # Calculate SSE, SSR
 sse = np.sum((y_test - y_pred) ** 2)
-ssr = np.sum((y_pred - np.mean(y)) ** 2)
+ssr = np.sum((y_pred - np.mean(y_test)) ** 2)
 
 # Evaluasi MAPE (Mean Average Percentage Error) pada model regresi linear
 def calculate_mape(y_test, y_pred):

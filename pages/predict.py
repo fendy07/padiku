@@ -189,6 +189,8 @@ with st.expander('FEATURE IMPORTANCE & NORMALITY TEST'):
                                    'x': 0.5, 
                                    'y': 0.95})
        st.plotly_chart(plot, use_container_width=True)
+
+       st.write(f"<b>NOTES</b>: Dalam pengujian normalitas bahwa data residual terlihat berdistribusi normal dimana mean, median dan modus dalam data mendekati nilai yang sama.", unsafe_allow_html=True)
    
 with col2:
     # Feature Importance
@@ -204,6 +206,8 @@ with col2:
                                      'x': 0.5, 
                                      'y': 0.95})
     st.plotly_chart(bar, use_container_width=True)
+    
+    st.write(f"<b>NOTES</b>: Dalam feature importance model regresi linear bahwa Luas Panen menjadi acuan hubungan dengan variabel terikat dalam hal produksi padi di Pulau Sumatera, hal ini semakin kuat bahwa luasnya hektar sawah maka berdampak pada produksi padi yang dihasilkan.", unsafe_allow_html=True)
 
 #----- PREDICT NEW DATA -------
 with st.sidebar:

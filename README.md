@@ -53,6 +53,14 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
+## Demo 
+
+<details open="" class="details-reset border rounded-2">
+    <video width="100%" controls>
+        <source src="https://raw.githubusercontent.com/fendy07/padiku/main/videos/Demo%20Padiku%20App.mp4" type="video/mp4" controls="controls" muted="muted" class="d-block rounded-bottom-2 border-top width-fit" style="max-height:640px; min-height: 200px"> 
+    </video>
+</details>
+
 
 ## License
 

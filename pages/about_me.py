@@ -17,7 +17,7 @@ st.write("\n")
 st.subheader("Experience and Qualifications", anchor=False)
 st.write(
     """
-    - 2 years experience coaching and mentoring about Artificial Intelligence and Data Science
+    - 3 years experience coaching and mentoring about Artificial Intelligence and Data Science
     - Strong hands-on experience and knowledge in Python programming and Data Science
     - Proficient in using various libraries and tools such as TensorFlow, Keras, Scikit-learn, OpenCV, Pandas
     - Good understanding and analyzing of statistical principles and their perspective applications
@@ -35,7 +35,7 @@ st.write(
     - Data Analysis and Visualization : Pandas, Matplotlib, Seaborn, Tableau, Spreadsheet, Excel
     - Modelling : Tensorflow, Keras, PyCaret, PyTorch, XGBoost, CometML, Scikit-learn
     - Databases : MySQL, PostgreSQL, SQLite
-    - Deployment : Streamlit, Flask, Gradio, Huggingface
+    - Deployment : Streamlit, Flask, Gradio, Huggingface, FastAPI
     - Version Control: Git, GitHub
     - CV and NLP Frameworks : OpenCV, NLTK, Scikit-image, Pillow
 
